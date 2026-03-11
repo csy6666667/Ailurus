@@ -12,10 +12,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Appbrand: typeof import('./src/components/layout/Appbrand.vue')['default']
+    AudioProcess: typeof import('./src/components/views/AudioProcess/index.vue')['default']
     DropDown: typeof import('./src/components/common/DropDown.vue')['default']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     'IconEp-{{': typeof import('~icons/ep/{{')['default']
     IconEpPicture: typeof import('~icons/ep/picture')['default']
+    ImageProcess: typeof import('./src/components/views/ImageProcess/index.vue')['default']
     MainLayout: typeof import('./src/components/layout/MainLayout.vue')['default']
     Navbar: typeof import('./src/components/layout/Navbar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

@@ -3,7 +3,7 @@
 * @Author: 陈思宇
 * @Date: 2026-03-11 15:21:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-11 19:35:00
+* @LastEditTime: 2026-03-11 20:32:00
 -->
 <template>
   <div class="layout">
@@ -12,6 +12,7 @@
     </header>
     <section class="layout-body">
         <SideBar/>
+        <router-view/>
     </section>
   </div>
 </template>
@@ -27,5 +28,6 @@ import SideBar from './SideBar.vue';
 }
 .layout-body{
   height: 100%;
+  display: flex;
 }
 </style>
