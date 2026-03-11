@@ -1,0 +1,31 @@
+/**
+ * @Description: 全局基础样式与重置
+ * @Author: 陈思宇
+ * @Date: 2026-03-11 16:33:00
+ * @LastEditors: 陈思宇
+ * @LastEditTime: 2026-03-11 19:35:00
+ */
+@import "./variables.css";
+
+html, body{
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+}
+
+#app {
+  max-width: 1280px;
+}
+
+ul{
+  list-style: none;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
