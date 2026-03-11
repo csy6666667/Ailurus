@@ -18,6 +18,8 @@ declare module 'vue' {
     IconEpPicture: typeof import('~icons/ep/picture')['default']
     MainLayout: typeof import('./src/components/layout/MainLayout.vue')['default']
     Navbar: typeof import('./src/components/layout/Navbar.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/layout/Sidebar.vue')['default']
     SideBar: typeof import('./src/components/layout/SideBar.vue')['default']
   }
