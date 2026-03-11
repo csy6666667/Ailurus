@@ -3,14 +3,14 @@
 * @Author: 陈思宇
 * @Date: 2026-03-11 15:34:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-11 19:35:00
+* @LastEditTime: 2026-03-11 20:32:00
 -->
 <template>
   <div class="drop-down">
     <el-icon class="icon">
       <component :is="props.menuItem.icon"/>
     </el-icon>
-    <span class="drop-down-title">{{ props.menuItem.title }}</span>
+    <router-link :to="{name: props.menuItem.routeName}" class="drop-down-title">{{ props.menuItem.title }}</router-link>
   </div>
 </template>
 

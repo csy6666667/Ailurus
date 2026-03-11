@@ -15,4 +15,9 @@ export default defineConfig({
       autoInstall: true,
     })
   ],
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
+  }
 })
