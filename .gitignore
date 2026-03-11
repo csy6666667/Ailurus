@@ -32,3 +32,5 @@ Thumbs.db
 
 #本地环境配置
 .env*.local
+
+components.d.ts
