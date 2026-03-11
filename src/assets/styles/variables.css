@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-11 16:28:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-11 19:35:00
+ * @LastEditTime: 2026-03-11 21:03:00
  */
 :root{
   --sidebar-bg-color: #26211e;
@@ -24,7 +24,7 @@
   --h-lg:64px;
 
   --drop-down-item-h: var(--h-md);
-  --navbar-h: var(--h-md);
+  --layout-header-h: var(--h-md);
 
   /* 间距 */
   --spacing-sm: 8px;
@@ -44,4 +44,9 @@
   --border-width-md: 1px;
 
   --navbar-border-bottom: var(--navbar-border-bottom-color) var(--border-width-md) solid;
+
+  /* 宽度 */
+  --width-md: 200px;
+
+  --side-bar-w: var(--width-md);  
 }
