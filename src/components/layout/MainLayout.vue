@@ -3,7 +3,7 @@
 * @Author: 陈思宇
 * @Date: 2026-03-11 15:21:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-11 21:03:00
+* @LastEditTime: 2026-03-13 12:12:00
 -->
 <template>
   <div class="layout">
@@ -13,14 +13,19 @@
     <section class="layout-body">
         <SideBar/>
         <main class="layout-content">
-          <router-view/>
+          <Workplace/>
+          <div class="control-panel">
+            <router-view/>
+          </div>
         </main>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
+import Workplace from './Workplace.vue';
 import SideBar from './SideBar.vue';
+import Navbar from './Navbar.vue';
 </script>
 
 <style scoped>
@@ -43,5 +48,10 @@ import SideBar from './SideBar.vue';
   overflow-y: auto;
   min-height: 0;
   flex: 1;
+  display: flex;
+}
+.control-panel{
+  width: var(--control-panel-w);
+  background-color: var(--control-panel-bg-color);
 }
 </style>

@@ -3,14 +3,32 @@
  * @Author: 陈思宇
  * @Date: 2026-03-11 16:28:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-11 21:03:00
+ * @LastEditTime: 2026-03-13 12:12:00
  */
 :root{
-  --sidebar-bg-color: #26211e;
-  --drop-down-item-color: #ffffff;
-  --navbar-bg-color: #d96633;
-  --navbar-border-bottom-color: #e88b58;
+  --white: #ffffff;
+
+  --sidebar-bg-color: #2d1610;
+  --drop-down-item-1-bg-color: #d96633; 
+  --drop-down-item-2-bg-color: #4a261a;
+  --drop-down-item-3-active-bg-color: #f8e6d1;
+  --drop-down-item-color: var(--white);
+  --navbar-bg-color: #1a0d0a;
+  --navbar-border-bottom-color: #d64933;
+  --navbar-item-color: #f8e6d1;
+  --drop-down-item-2-color: #f8e6d1;
+  --drop-down-item-3-active-color: #634b44;
+  --canvas-wrapper-bg-color: #2d1610;
+  --preview-stage-hover-border-color: #d15a3e;
+  --preview-stage-hover-bg-color: var(--white);
+  --preview-stage-border-color: #5e3b33;
+  --preview-stage-bg-color: #f5f5f7;
+  --upload-placeholder-color: #515154;
+  --upload-icon-color: #d15a3e;
+  --canvas-bg-color: var(--white);
+  --control-panel-bg-color: #2d1610;
   /* 字体大小 */
+  --unix-fs: 8px;
   /* 极小 */
   --fs-xs: 12px;
   /* 标准 */
@@ -18,22 +36,34 @@
 
   --sidebar-menu-fs: var(--fs-md);
   --drop-down-item-fs: var(--fs-md);
+  --upload-icon-fs: calc(var(--unix-fs) * 6);
 
   /* 高度 */
   --h-md: 50px;
-  --h-lg:64px;
+  --h-lg: 56px;
+  --h-xl:64px;
+  --unix-h: 8px;
 
-  --drop-down-item-h: var(--h-md);
+  --drop-down-item-1-h: var(--h-lg);
+  --drop-down-item-2-h: var(--h-md);
+  --drop-down-item-3-h: var(--h-md);
   --layout-header-h: var(--h-md);
+  --preview-stage-h: calc(var(--unix-h) * 45);
 
   /* 间距 */
   --spacing-sm: 8px;
+  --spacing-ms: 16px;
   --spacing-md: 20px;
+  --spacing-lg: 32px;
   --spacing-xl: 44px;
 
   --drop-down-item-padding: 0 var(--spacing-xl) 0 var(--spacing-md);
   --drop-down-item-gap: var(--spacing-sm);
   --appbrand-padding-left: var(--spacing-md);
+  --drop-down-item-3-padding-left: var(--spacing-lg);
+  --canvas-wrapper-margin: 0 var(--spacing-md);
+  --canvas-wrapper-padding: var(--spacing-ms);
+  --upload-placeholder-gap: var(--spacing-sm);
 
   /* 图标大小 */
   --icon-md: 18px;
@@ -42,11 +72,39 @@
 
     /* 粗细 */
   --border-width-md: 1px;
+  --border-width-lg: 2px;
 
   --navbar-border-bottom: var(--navbar-border-bottom-color) var(--border-width-md) solid;
 
   /* 宽度 */
-  --width-md: 200px;
+  --unix-w: 100px;
 
-  --side-bar-w: var(--width-md);  
+  --side-bar-w: calc(var(--unix-w) * 2);  
+  --control-panel-w: calc(var(--unix-w) * 4);
+
+  /* 圆角 */
+  --radius-lg: 10px;
+
+  --canvas-wrapper-radius: var(--radius-lg);
+  --preview-stage-radius: var(--radius-lg);
+  /* 边框样式 */
+  --border-style-dashed: dashed;
+  
+  --preview-stage-border: var(--border-style) var(--preview-stage-border-color) var(--border-width-lg);
+
+  /* 阴影 */
+  --canvas-wrapper-shadow-color: rgba(0, 0, 0, 0.5);
+  --canvas-shadow-color: rgba(0, 0, 0, 0.15);
+
+  --canvas-wrapper-shadow: 0 10px 30px var(--canvas-wrapper-shadow-color);
+  --canvas-shadow: 0 4px 12px var(--canvas-shadow-color);
+  /* 字体粗细 */
+  --unix-fw: 100;
+
+  --upload-hint: calc(var(--unix-fw) * 5);
+
+  /* 字间距 */
+  --unix-letter-spacing: 1px;
+
+  --upload-hint-letter-spacing: var(--unix-letter-spacing);
 }
