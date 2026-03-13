@@ -3,12 +3,10 @@
  * @Author: 陈思宇
  * @Date: 2026-03-11 19:49:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-11 20:32:00
+ * @LastEditTime: 2026-03-13 12:12:00
  */
 <template>
   <div class="image-process">
-    <h2>图片处理页面</h2>
-    <!-- 这里可以添加图片处理相关的内容 -->
   </div>
 </template>
 <script setup lang="ts">

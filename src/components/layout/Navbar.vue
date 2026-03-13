@@ -20,5 +20,6 @@ import AppBrand from './Appbrand.vue';
   height: 100%;
   width: 100%;
   border-bottom: var(--navbar-border-bottom);
+  color: var(--navbar-item-color);
 }
 </style>
