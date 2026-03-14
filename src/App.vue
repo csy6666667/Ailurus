@@ -12,6 +12,23 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import MainLayout from './components/layout/MainLayout.vue';
+onMounted(() => {
+  const checkOpenCV = () => {
+    if (window.cv && window.cv.runtimeInitialized) {
+      console.log('✅ OpenCV.js 已就绪 (直接检测成功)');
+      return true;
+    }
+    return false;
+  };
 
+  if (checkOpenCV()) return;
+
+  if (window.cv) {
+    window.cv.onRuntimeInitialized = () => {
+      console.log("🚀 OpenCV.js 通过 cv 对象的钩子初始化成功!");
+    };
+  }
+})
 </script>

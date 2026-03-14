@@ -16,8 +16,17 @@
 
 <script setup lang="ts">
 import {ref, type Ref} from 'vue';
+import { rotateImage } from '@/components/utils/picture/baseTransform/rotate';
 
 const angle: Ref<number> = ref(0);
+const canvasInput = ref<HTMLCanvasElement | null>(null);
+const canvasOutput = ref<HTMLCanvasElement | null>(null);
+
+const handleRotate = () => {
+  if(canvasInput.value && canvasOutput.value){
+    rotateImage(canvasInput.value, canvasOutput.value, {angle: angle.value});
+  }
+}
 </script>
 
 <style scoped>
