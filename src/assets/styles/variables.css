@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-11 16:28:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-13 12:12:00
+ * @LastEditTime: 2026-03-14 20:38:00
  */
 :root{
   --white: #ffffff;
@@ -27,6 +27,10 @@
   --upload-icon-color: #d15a3e;
   --canvas-bg-color: var(--white);
   --control-panel-bg-color: #2d1610;
+  --download-btn-hover-bg-color: #e67e22;
+  --download-btn-hover-border-color: #e67e22;
+  --reset-btn-hover-bg-color: #5e3b33;
+  --reset-btn-hover-border-color: #5e3b33;
   /* 字体大小 */
   --unix-fs: 8px;
   /* 极小 */
@@ -64,6 +68,10 @@
   --canvas-wrapper-margin: 0 var(--spacing-md);
   --canvas-wrapper-padding: var(--spacing-ms);
   --upload-placeholder-gap: var(--spacing-sm);
+  --control-panel-padding: var(--spacing-lg);
+  --rotate-module-padding: var(--control-panel-padding);
+  --panel-button-padding: 0 var(--control-panel-padding);
+  --panel-button-gap: var(--spacing-ms);
 
   /* 图标大小 */
   --icon-md: 18px;
