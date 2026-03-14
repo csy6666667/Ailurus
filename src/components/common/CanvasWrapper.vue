@@ -3,7 +3,7 @@
 * @Author: 陈思宇
 * @Date: 2026-03-12 19:58:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-13 12:12:00
+* @LastEditTime: 2026-03-14 20:38:00
 -->
 <template>
   <div class="canvas-wrapper">
@@ -22,13 +22,16 @@
         <p class="upload-hint">点击上传图片</p>
       </div>
     </div>
-    <canvas ref="canvasRef" class="canvas" v-show="hasImage"></canvas>
+    <canvas ref="canvasRef" class="canvas canvasInput canvasOutput" v-show="hasImage" :style="previewStyle"></canvas>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Upload } from '@element-plus/icons-vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { usebaseTransformStore } from '@/store/picture/baseTransform';
+
+const baseTransformStore = usebaseTransformStore();
 
 let hasImage = ref(false);
 const fileInput = ref<HTMLInputElement | null>(null);
@@ -56,23 +59,35 @@ const onFileSelected = (event: Event) => {
 }
 
 const renderToCanvas = (img: HTMLImageElement) => {
-  const canvas = canvasRef.value
-  if(!canvas) return;
+  const canvas = canvasRef.value;
+  if (!canvas) return;
+
+  canvas.width = img.width;
+  canvas.height = img.height;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
-
-  canvas.width =img.width;
-  canvas.height = img.height;
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(img, 0, 0);
 
+  const offscreenCanvas = document.createElement('canvas');
+  offscreenCanvas.width = img.width;
+  offscreenCanvas.height = img.height;
+  const offCtx = offscreenCanvas.getContext('2d');
+  offCtx?.drawImage(img, 0, 0);
+
+  baseTransformStore.setInitialCanvas(offscreenCanvas);
+
   hasImage.value = true;
-}
+};
 
 const triggerFileInput = () => {
   fileInput.value?.click();
 }
+
+const previewStyle = computed(() => ({
+  transform: `rotate(${baseTransformStore.angle}deg)`,
+  transition: 'none',
+  'will-change': 'transform' 
+}));
 </script>
 
 <style scoped>

@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-3-14 14:51:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-13 12:12:00
+ * @LastEditTime: 2026-03-14 20:38:00
 */
 interface RotateOptions {
   angle: number;
@@ -24,14 +24,14 @@ export const rotateImage = (
   const M = window.cv.getRotationMatrix2D(center, angle, 1.0);
 
   const dsize = new window.cv.Size(src.cols, src.rows);
-  window.cv.wrapAffine(
+  window.cv.warpAffine(
     src,
     dst,
     M,
     dsize,
     window.cv.INTER_LINEAR,
     window.cv.BORDER_CONSTANT,
-    new window.cv.Scalar(0, 0, 0, 0) // 透明背景
+    new window.cv.Scalar(255, 255, 255, 255)
   )
 
   window.cv.imshow(targetCanvas, dst);
