@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-11 16:28:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-14 20:38:00
+ * @LastEditTime: 2026-03-15 14:51:00
  */
 :root{
   --white: #ffffff;
@@ -31,6 +31,7 @@
   --download-btn-hover-border-color: #e67e22;
   --reset-btn-hover-bg-color: #5e3b33;
   --reset-btn-hover-border-color: #5e3b33;
+  --viewpoint-container-bg-color: #1a1a1a;
   /* 字体大小 */
   --unix-fs: 8px;
   /* 极小 */
