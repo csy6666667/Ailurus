@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-11 16:28:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-15 14:51:00
+ * @LastEditTime: 2026-03-15 15:29:00
  */
 :root{
   --white: #ffffff;
@@ -32,6 +32,10 @@
   --reset-btn-hover-bg-color: #5e3b33;
   --reset-btn-hover-border-color: #5e3b33;
   --viewpoint-container-bg-color: #1a1a1a;
+  --slider-color-1: #4a261a;
+  --operate-title-color-1: #f8e6d1;
+  --slider-thumb-bg-color-1: #d96633;
+  --operate-label-color-1: #f8e6d1;
   /* 字体大小 */
   --unix-fs: 8px;
   /* 极小 */
@@ -42,8 +46,9 @@
   --sidebar-menu-fs: var(--fs-md);
   --drop-down-item-fs: var(--fs-md);
   --upload-icon-fs: calc(var(--unix-fs) * 6);
-
+  --operate-label-fs: var(--fs-xs);
   /* 高度 */
+  --h-xs: 20px;
   --h-md: 50px;
   --h-lg: 56px;
   --h-xl:64px;
@@ -54,6 +59,8 @@
   --drop-down-item-3-h: var(--h-md);
   --layout-header-h: var(--h-md);
   --preview-stage-h: calc(var(--unix-h) * 45);
+  --slider-thumb-h: var(--h-xs);
+  --slider-h: 6px;
 
   /* 间距 */
   --spacing-sm: 8px;
@@ -70,9 +77,10 @@
   --canvas-wrapper-padding: var(--spacing-ms);
   --upload-placeholder-gap: var(--spacing-sm);
   --control-panel-padding: var(--spacing-lg);
-  --rotate-module-padding: var(--control-panel-padding);
   --panel-button-padding: 0 var(--control-panel-padding);
   --panel-button-gap: var(--spacing-ms);
+  --operate-gap: var(--spacing-md);
+  --operate-padding: var(--spacing-md) var(--spacing-md);
 
   /* 图标大小 */
   --icon-md: 18px;
@@ -87,15 +95,19 @@
 
   /* 宽度 */
   --unix-w: 100px;
+  --w-xs: 20px;
 
   --side-bar-w: calc(var(--unix-w) * 2);  
   --control-panel-w: calc(var(--unix-w) * 4);
+  --slider-thumb-w: var(--w-xs);
 
   /* 圆角 */
   --radius-lg: 10px;
+  --radius-xs: 3px;
 
   --canvas-wrapper-radius: var(--radius-lg);
   --preview-stage-radius: var(--radius-lg);
+  --slider-radius: var(--radius-xs);
   /* 边框样式 */
   --border-style-dashed: dashed;
   
@@ -111,6 +123,7 @@
   --unix-fw: 100;
 
   --upload-hint: calc(var(--unix-fw) * 5);
+  --operate-title-fw: calc(var(--unix-fw) * 5);
 
   /* 字间距 */
   --unix-letter-spacing: 1px;

@@ -1,9 +1,9 @@
 /**
- * @Description: 图片旋转页面组件
+ * @Description: 图片旋转组件
  * @Author: 陈思宇
  * @Date: 2026-03-13 12:00:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-14 20:38:00
+ * @LastEditTime: 2026-03-15 15:29:00
  */
 <template>
   <div class="rotate-module">
@@ -23,7 +23,6 @@ const baseTransformStore = usebaseTransformStore();
 <style scoped>
 .rotate-module{
   flex: 1;
-  padding: var(--rotate-module-padding);
   color: #fff;
 }
 </style>
