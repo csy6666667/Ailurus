@@ -3,7 +3,7 @@
 * @Author: 陈思宇
 * @Date: 2026-03-14 21:11:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-15 14:52:00
+* @LastEditTime: 2026-03-16 15:36:00
 -->
 <template>
   <div class="viewport-container" v-show="hasImage">
@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick } from 'vue';
 import { usebaseTransformStore } from '@/store/picture/baseTransform';
 
 const baseTransformStore = usebaseTransformStore();
@@ -29,12 +29,18 @@ const canvasRef = ref<HTMLCanvasElement | null>(null);
 
 let  hasImage = ref<boolean>(false);
 
-const renderToCanvas = (img: HTMLImageElement) => {
+const renderToCanvas = async (img: HTMLImageElement) => {
   const canvas = canvasRef.value;
   if (!canvas) return;
 
   canvas.width = img.width;
   canvas.height = img.height;
+
+  hasImage.value = true;
+
+  await nextTick();
+  const visualWidth = canvasRef.value?.getBoundingClientRect().width || canvas.width;
+  const baseRatio = visualWidth / canvas.width 
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
   ctx.drawImage(img, 0, 0);
@@ -46,14 +52,14 @@ const renderToCanvas = (img: HTMLImageElement) => {
   offCtx?.drawImage(img, 0, 0);
 
   baseTransformStore.setInitialCanvas(offscreenCanvas);
-
-  hasImage.value = true;
+  baseTransformStore.setBaseRatio(baseRatio);
 };
 
 const previewStyle = computed(() => ({
   transform: `
     rotate(${baseTransformStore.angle}deg)
     scale(${baseTransformStore.scale})
+    translate(${baseTransformStore.translateX}px, ${baseTransformStore.translateY}px)
   `,
   transition: 'none',
   'will-change': 'transform' 

@@ -1,9 +1,9 @@
 /**
- * @Description: 图片旋转页面组件
+ * @Description: 图片基础变换页面组件
  * @Author: 陈思宇
  * @Date: 2026-03-12 21:49:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-16 12:21:00
+ * @LastEditTime: 2026-03-16 15:36:00
  */
 <template>
   <div class="base-transform">
