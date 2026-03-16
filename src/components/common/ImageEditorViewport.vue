@@ -51,7 +51,10 @@ const renderToCanvas = (img: HTMLImageElement) => {
 };
 
 const previewStyle = computed(() => ({
-  transform: `rotate(${baseTransformStore.angle}deg)`,
+  transform: `
+    rotate(${baseTransformStore.angle}deg)
+    scale(${baseTransformStore.scale})
+  `,
   transition: 'none',
   'will-change': 'transform' 
 }));

@@ -9,30 +9,30 @@ import { defineStore } from "pinia";
 import { markRaw } from "vue";
 import type { baseTransform } from "@/types/picture/baseTransform"; 
 import { rotateImage } from '@/components/utils/picture/baseTransform/rotate';
-
+import { scaleImage } from "@/components/utils/picture/baseTransform/scale";
 
 export const usebaseTransformStore = defineStore('baseTransform',{
   state: (): baseTransform => ({
     angle: 0,
+    scale: 1,
     initialCanvas: null as HTMLCanvasElement | null,
-    currentCanvas: null as HTMLCanvasElement | null
   }),
   actions: {
     setInitialCanvas(canvas: HTMLCanvasElement){
       this.initialCanvas = markRaw(canvas);
     },
-    setCurrentCanvas(canvas: HTMLCanvasElement){
-      this.currentCanvas = markRaw(canvas);
-    },
     reset(){
       this.angle = 0;
+      this.scale = 1;
     },
     download() {
       if (this.initialCanvas) {
         const tempCanvas = document.createElement('canvas');
         
         rotateImage(this.initialCanvas, tempCanvas, { angle: -this.angle });
+        scaleImage(tempCanvas, tempCanvas, { scale: this.scale });
         
+        console.log(this.scale);
         tempCanvas.toBlob((blob) => {
           if (!blob) {
             console.error('图片生成失败');

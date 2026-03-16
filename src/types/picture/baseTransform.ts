@@ -7,6 +7,6 @@
 */
 export interface baseTransform {
   angle: number,
-  initialCanvas: HTMLCanvasElement | null,
-  currentCanvas: HTMLCanvasElement | null
+  scale: number,
+  initialCanvas: HTMLCanvasElement | null
 }

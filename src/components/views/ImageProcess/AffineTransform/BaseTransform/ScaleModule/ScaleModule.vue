@@ -17,6 +17,7 @@
           max="3.0"
           step="0.1"
           class="scale-slider"
+          v-model.number="baseTransformStore.scale"
         />
         <div class="scale-labels">
           <span>0.1x</span>
@@ -29,6 +30,9 @@
 </template>
 
 <script setup lang="ts">
+import { usebaseTransformStore } from '@/store/picture/baseTransform';
+
+const baseTransformStore = usebaseTransformStore();
 </script>
 
 <style scoped>    
