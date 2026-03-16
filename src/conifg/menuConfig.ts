@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-3-14 14:51:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-13 12:12:00
+ * @LastEditTime: 2026-03-16 16:49:00
 */
 import { markRaw } from "vue"
 import { Picture, Mic } from "@element-plus/icons-vue"
@@ -28,13 +28,16 @@ export const sideBarMenu: MenuItem[] = [
         depth: 2,
         children: [
           { title: '基础变换', routeName: 'baseTransform', depth: 3 },
-          { title: '高级几何', routeName: 'complexTransform', depth: 3 },
         ]
       },
-      // {
-      //   title: '形态学分析',
-      //   depth: 2
-      // }
+      {
+        title: '形态学处理',
+        routeName: 'morphology',
+        depth: 2,
+        children: [
+          { title: '形状特征分析', routeName: 'morphologyAnalysis', depth: 3},
+        ]
+      }
     ]
   },
   {
