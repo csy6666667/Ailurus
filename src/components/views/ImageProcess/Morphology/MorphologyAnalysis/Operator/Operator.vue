@@ -3,12 +3,12 @@
  * @Author: 陈思宇
  * @Date: 2026-03-16 18:16:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-16 15:36:00
+ * @LastEditTime: 2026-03-16 21:25:00
  */
  <template>
   <section class="panel-section">
     <h3 class="operator-title">形态学算子</h3>
-    <select  class="styled-select">
+    <select  class="styled-select" v-model="morphologyStore.operator">
       <option value="MORPH_ERODE">腐蚀 (Erosion)</option>
       <option value="MORPH_DILATE">膨胀 (Dilation)</option>
       <option value="MORPH_OPEN">开运算 (Opening)</option>
@@ -19,6 +19,12 @@
     </select>
   </section>
  </template>
+
+<script setup lang="ts">
+import { useMorphologyStore } from '@/store/picture/morphology';
+
+const morphologyStore = useMorphologyStore();
+</script>
 
  <style scoped>
 .operator-title{

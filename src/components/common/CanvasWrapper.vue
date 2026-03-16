@@ -3,7 +3,7 @@
 * @Author: 陈思宇
 * @Date: 2026-03-12 19:58:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-15 14:51:00
+* @LastEditTime: 2026-03-16 21:25:00
 -->
 <template>
   <div class="canvas-wrapper">
@@ -14,7 +14,7 @@
       @change="onFileSelected"
       style="display: none;"
     />
-    <div v-show="!hasImage" class="preview-stage" @click="triggerFileInput">
+    <div v-show="!props.hasImage" class="preview-stage" @click="triggerFileInput">
       <div class="upload-placeholder">
         <el-icon class="upload-icon">
           <component :is="Upload" />
@@ -22,7 +22,7 @@
         <p class="upload-hint">点击上传图片</p>
       </div>
     </div>
-    <image-editor-viewport ref="viewport"/>
+    <image-editor-viewport ref="viewport" :has-image="props.hasImage"/>
   </div>
 </template>
 
@@ -31,9 +31,13 @@ import { Upload } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import ImageEditorViewport from './ImageEditorViewport.vue';
 
-let hasImage = ref(false);
+const props = defineProps<{
+  hasImage: boolean
+}>();
 const fileInput = ref<HTMLInputElement | null>(null);
 const viewport = ref<InstanceType<typeof ImageEditorViewport> | null>(null);
+
+const emit = defineEmits(['update:hasImage']);  
 
 const onFileSelected = (event: Event) => {
   const target = event.target as HTMLInputElement
@@ -48,8 +52,10 @@ const onFileSelected = (event: Event) => {
     
     const img =new Image();
     img.onload = () => {
-      viewport.value?.renderToCanvas(img);
-      hasImage.value = true;
+      emit('update:hasImage', true);
+      requestAnimationFrame(async () => {
+        await viewport.value?.renderToCanvas(img);
+      });
     }
     img.src = imageDataUrl;
   }
@@ -60,6 +66,10 @@ const onFileSelected = (event: Event) => {
 const triggerFileInput = () => {
   fileInput.value?.click();
 }
+
+defineExpose({
+  getCanvas: () => viewport.value?.canvasEl
+});
 </script>
 
 <style scoped>

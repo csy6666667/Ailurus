@@ -3,14 +3,14 @@
  * @Author: 陈思宇
  * @Date: 2026-03-16 18:16:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-16 15:36:00
+ * @LastEditTime: 2026-03-16 21:25:00
  */
 
 <template>
   <section class="threshold">
     <h3 class="threshold-title">二值化阈值</h3>
     <div class="control-group">
-      <input type="range"  min="0" max="255" class="threshold-slider"/>
+      <input type="range"  min="0" max="255" class="threshold-slider" v-model.number="morphologyStore.threshold"/> 
     </div>
     <div class="control-group inline">
       <label class="checkbox-label">
@@ -19,6 +19,12 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { useMorphologyStore } from '@/store/picture/morphology';
+
+const morphologyStore = useMorphologyStore();
+</script>
 
 <style scoped>
 .threshold-title{
