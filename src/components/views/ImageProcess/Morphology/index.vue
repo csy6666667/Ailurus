@@ -1,9 +1,9 @@
 <!--
-* @FileDescription: 画布组件
+* @FileDescription: 形态学处理画布组件
 * @Author: 陈思宇
-* @Date: 2026-03-12 19:58:00
+* @Date: 2026-03-16 16:21:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-13 12:12:00
+* @LastEditTime: 2026-03-16 16:49:00
 -->
 <template>
   <div class="workplace">
@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import CanvasWrapper from '../common/CanvasWrapper.vue';
+import CanvasWrapper from '@/components/common/CanvasWrapper.vue';
 
 </script>
 
