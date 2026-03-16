@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-16 12:10:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-16 12:21:00
+ * @LastEditTime: 2026-03-16 15:36:00
  */
 
 <template>
@@ -18,7 +18,9 @@
           min="-200"
           max="200"
           step="1"
-          class="translate-slider"        />
+          class="translate-slider"   
+          v-model.number="baseTransformStore.translateX"
+        />
         <div class="translate-labels">
           <span>-200</span>
           <span>0</span>
@@ -34,6 +36,7 @@
           max="200"
           step="1"
           class="translate-slider"
+          v-model.number="baseTransformStore.translateY"
         />
         <div class="translate-labels">
           <span>-200</span>
@@ -46,6 +49,9 @@
 </template>
 
 <script setup lang="ts">
+import { usebaseTransformStore } from '@/store/picture/baseTransform';
+
+const baseTransformStore = usebaseTransformStore();
 </script>
 
 <style scoped>

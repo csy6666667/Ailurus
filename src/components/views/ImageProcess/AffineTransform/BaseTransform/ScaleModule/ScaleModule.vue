@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-13 12:00:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-15 15:26:00
+ * @LastEditTime: 2026-03-16 15:36:00
  */
 
 <template>
@@ -14,7 +14,7 @@
         <input
           type="range"
           min="0.1"
-          max="3.0"
+          max="2.0"
           step="0.1"
           class="scale-slider"
           v-model.number="baseTransformStore.scale"
@@ -22,7 +22,7 @@
         <div class="scale-labels">
           <span>0.1x</span>
           <span>1.0x</span>
-          <span>3.0x</span>
+          <span>2.0x</span>
         </div>
       </div>
     </div>
