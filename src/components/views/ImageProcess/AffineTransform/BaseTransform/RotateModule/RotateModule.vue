@@ -32,7 +32,7 @@ const baseTransformStore = usebaseTransformStore();
 
 .rotate-title{
   color: var(--operate-title-color-1);
-  font-size: var(--fs-md);
+  font-size: var(--operate-title-fs);
   font-weight: var(--operate-title-fw);
 }
 

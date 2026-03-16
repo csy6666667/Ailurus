@@ -46,7 +46,8 @@
   --sidebar-menu-fs: var(--fs-md);
   --drop-down-item-fs: var(--fs-md);
   --upload-icon-fs: calc(var(--unix-fs) * 6);
-  --operate-label-fs: var(--fs-xs);
+  --operate-label-fs: var(--fs-md);
+  --operate-title-fs: calc(var(--unix-fs) * 2);
   /* 高度 */
   --h-xs: 20px;
   --h-md: 50px;

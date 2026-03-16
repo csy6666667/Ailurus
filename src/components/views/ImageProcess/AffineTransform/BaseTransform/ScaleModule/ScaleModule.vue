@@ -37,7 +37,7 @@ const baseTransformStore = usebaseTransformStore();
 
 <style scoped>    
 .scale-title {
-  font-size: var(--fs-md);
+  font-size: var(--operate-title-fs);
   color: var(--operate-title-color-1);
   font-weight: var(--operate-title-fw);
 }
