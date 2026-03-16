@@ -3,10 +3,10 @@
 * @Author: 陈思宇
 * @Date: 2026-03-14 21:11:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-16 15:36:00
+* @LastEditTime: 2026-03-16 21:25:00
 -->
 <template>
-  <div class="viewport-container" v-show="hasImage">
+  <div class="viewport-container" v-show="props.hasImage">
     <div class="crop-box">
       <canvas 
         ref="canvasRef" 
@@ -23,11 +23,13 @@
 import { ref, computed, nextTick } from 'vue';
 import { usebaseTransformStore } from '@/store/picture/baseTransform';
 
+const props = defineProps<{
+  hasImage: boolean
+}>();
+
 const baseTransformStore = usebaseTransformStore();
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
-
-let  hasImage = ref<boolean>(false);
 
 const renderToCanvas = async (img: HTMLImageElement) => {
   const canvas = canvasRef.value;
@@ -35,8 +37,6 @@ const renderToCanvas = async (img: HTMLImageElement) => {
 
   canvas.width = img.width;
   canvas.height = img.height;
-
-  hasImage.value = true;
 
   await nextTick();
   const visualWidth = canvasRef.value?.getBoundingClientRect().width || canvas.width;
@@ -66,7 +66,8 @@ const previewStyle = computed(() => ({
 }));
 
 defineExpose({
-  renderToCanvas
+  renderToCanvas,
+  canvasEl: canvasRef
 })
 </script>
 

@@ -3,14 +3,14 @@
  * @Author: 陈思宇
  * @Date: 2026-03-16 18:16:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-16 15:36:00
+ * @LastEditTime: 2026-03-16 21:25:00
  */
 <template>
   <section class="panel-section">
     <h3 class="kernel-title">内核配置</h3>
     <div class="control-group">
       <label class="kernel-label">形状</label>
-      <select  class="styled-select">
+      <select  class="styled-select" v-model="morphologyStore.kernelShape">
         <option value="MORPH_RECT">矩形</option>
         <option value="MORPH_CROSS">十字形</option>
         <option value="MORPH_ELLIPSE">椭圆形</option>
@@ -22,14 +22,21 @@
         type="range" 
         min="3" max="51" step="2" 
         class="kernel-size-slider"
+        v-model.number="morphologyStore.kernelSize"
       />
     </div>
     <div class="control-group">
       <label class="kernel-label">迭代次数</label>
-      <input type="range" min="1" max="10" class="range-slider"/>
+      <input type="range" min="1" max="10" class="range-slider" v-model.number="morphologyStore.iterations"/>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { useMorphologyStore } from '@/store/picture/morphology';
+
+const morphologyStore = useMorphologyStore();
+</script>
 
 <style scoped>
 .kernel-title{
