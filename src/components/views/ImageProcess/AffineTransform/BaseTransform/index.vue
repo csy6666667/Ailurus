@@ -3,12 +3,13 @@
  * @Author: 陈思宇
  * @Date: 2026-03-12 21:49:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-15 15:29:00
+ * @LastEditTime: 2026-03-16 12:21:00
  */
 <template>
   <div class="base-transform">
     <RotateModule />
     <ScaleModule />
+    <TranslateModule />
     <PanelButton @download="handleDownload" @reset="handleReset" />
   </div>
 </template>
@@ -16,6 +17,7 @@
 import PanelButton from '@/components/common/panelButton.vue';
 import RotateModule from './RotateModule/RotateModule.vue';
 import ScaleModule from './ScaleModule/ScaleModule.vue';
+import TranslateModule from './TranslateMudule/TranslateModule.vue';
 import { usebaseTransformStore } from '@/store/picture/baseTransform';
 
 const baseTransformStore = usebaseTransformStore();
