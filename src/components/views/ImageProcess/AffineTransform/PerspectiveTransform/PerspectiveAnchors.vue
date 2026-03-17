@@ -3,10 +3,10 @@
  * @Author: 陈思宇
  * @Date: 2026-03-17 16:04:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 20:12:00
+ * @LastEditTime: 2026-03-17 21:24:00
  */
 <template>
-  <svg class="perspective-svg" width="100%" height="100%">
+  <svg class="perspective-svg" width="100%" height="100%" v-if="perspectiveTransformStore.hasCorners">
     <polygon 
       :points="pointsString" 
       class="guideline"

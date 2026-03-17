@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-3-17 16:11:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 20:12:00
+ * @LastEditTime: 2026-03-17 21:24:00
 */
 interface point{
   x: number,
@@ -11,5 +11,6 @@ interface point{
 }
 export interface perspectiveTransform{
   corners: point[],
-  inputCanvas: HTMLCanvasElement | null
+  inputCanvas: HTMLCanvasElement | null,
+  hasCorners: boolean
 }

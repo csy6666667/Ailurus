@@ -3,7 +3,7 @@
 * @Author: 陈思宇
 * @Date: 2026-03-14 21:11:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-17 20:12:00
+* @LastEditTime: 2026-03-17 21:24:00
 -->
 <template>
   <div class="viewport-container" v-show="props.hasImage">
@@ -21,14 +21,16 @@
 
 <script setup lang="ts">
 import { ref, computed, nextTick } from 'vue';
-import { usePictureStore } from '@/store/picture/picture';
 import { usebaseTransformStore } from '@/store/picture/AffineTransform/BaseTransform/baseTransform';
 
 const props = defineProps<{
   hasImage: boolean
 }>();
 
-const pictureStore = usePictureStore();
+const emit = defineEmits<{
+  (e: 'image-ready', data: { visualWidth: number, visualHeight: number, baseRatio: number }): void
+}>();
+
 const baseTransformStore = usebaseTransformStore();
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 
@@ -41,6 +43,7 @@ const renderToCanvas = async (img: HTMLImageElement) => {
 
   await nextTick();
   const visualWidth = canvasRef.value?.getBoundingClientRect().width || canvas.width;
+  const visualHeight = canvasRef.value?.getBoundingClientRect().height || canvas.height; 
   const baseRatio = visualWidth / canvas.width 
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
@@ -53,7 +56,11 @@ const renderToCanvas = async (img: HTMLImageElement) => {
   offCtx?.drawImage(img, 0, 0);
 
   baseTransformStore.setInitialCanvas(offscreenCanvas);
-  pictureStore.setBaseRatio(baseRatio);
+  emit('image-ready', {
+    visualWidth,
+    visualHeight,
+    baseRatio
+  })
 };
 
 
