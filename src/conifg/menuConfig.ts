@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-3-14 14:51:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-16 16:49:00
+ * @LastEditTime: 2026-03-17 10:55:00
 */
 import { markRaw } from "vue"
 import { Picture, Mic } from "@element-plus/icons-vue"
@@ -28,6 +28,7 @@ export const sideBarMenu: MenuItem[] = [
         depth: 2,
         children: [
           { title: '基础变换', routeName: 'baseTransform', depth: 3 },
+          { title: '透视变换', routeName: 'perspectiveTransform', depth: 3 }
         ]
       },
       {
