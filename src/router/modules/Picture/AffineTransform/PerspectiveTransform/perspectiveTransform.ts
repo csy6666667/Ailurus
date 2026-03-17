@@ -15,7 +15,15 @@ const perspectiveTransformRoutes: RouteRecordRaw[] = [
     components: {
       viewport: () => import("@/components/views/ImageProcess/AffineTransform/index.vue"),
       console: () => import("@/components/views/ImageProcess/AffineTransform/PerspectiveTransform/index.vue")
-    }
+    },
+    children: [
+      {
+        path: '',
+        components: {
+          canvasOverlay: () => import("@/components/views/ImageProcess/AffineTransform/PerspectiveTransform/PerspectiveAnchors.vue")
+        }
+      }
+    ]
   }
 ]
 

@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { ref, computed, nextTick } from 'vue';
-import { usebaseTransformStore } from '@/store/picture/baseTransform';
+import { usebaseTransformStore } from '@/store/picture/AffineTransform/baseTransform';
 
 const props = defineProps<{
   hasImage: boolean

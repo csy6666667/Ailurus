@@ -21,7 +21,7 @@
  </template>
 
 <script setup lang="ts">
-import { useMorphologyStore } from '@/store/picture/morphology';
+import { useMorphologyStore } from '@/store/picture/Morphology/morphology';
 
 const morphologyStore = useMorphologyStore();
 </script>

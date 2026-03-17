@@ -13,7 +13,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Picture',
-    redirect: '/picture/AffineTransform/baseTransform',
+    redirect: '/picture/affineTransform/baseTransform',
     children:[
       ...pictureRoutes,
       ...audioRoutes

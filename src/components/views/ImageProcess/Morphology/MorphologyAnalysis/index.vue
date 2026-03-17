@@ -20,7 +20,7 @@ import PanelButton from '@/components/common/panelButton.vue';
 import Kernel from './Kernel/Kernel.vue';
 import Operator from './Operator/Operator.vue';
 import Threshold from './Threshold/Threshold.vue';
-import { useMorphologyStore } from '@/store/picture/morphology';
+import { useMorphologyStore } from '@/store/picture/Morphology/morphology';
 
 const morphologyStore = useMorphologyStore();
 
