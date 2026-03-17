@@ -3,10 +3,10 @@
  * @Author: 陈思宇
  * @Date: 2026-3-14 15:20:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 19:34:00
+ * @LastEditTime: 2026-03-17 20:12:00
 */
 import { applyPerspectiveEffect } from "@/components/utils/picture/affineTransform/perspectiveTransform/perspectiveTransform";
-import type { perspectiveTransform } from "@/types/picture/AffineTransform/perspectiveTransform";
+import type { perspectiveTransform } from "@/types/picture/AffineTransform/PerspectiveTransform/perspectiveTransform";
 import { defineStore } from "pinia";
 
 export const usePerspectiveTransformStore = defineStore('perspectiveTransform', {

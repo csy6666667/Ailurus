@@ -3,7 +3,7 @@
 * @Author: 陈思宇
 * @Date: 2026-03-14 21:11:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-16 21:25:00
+* @LastEditTime: 2026-03-17 20:12:00
 -->
 <template>
   <div class="viewport-container" v-show="props.hasImage">
@@ -21,14 +21,15 @@
 
 <script setup lang="ts">
 import { ref, computed, nextTick } from 'vue';
-import { usebaseTransformStore } from '@/store/picture/AffineTransform/baseTransform';
+import { usePictureStore } from '@/store/picture/picture';
+import { usebaseTransformStore } from '@/store/picture/AffineTransform/BaseTransform/baseTransform';
 
 const props = defineProps<{
   hasImage: boolean
 }>();
 
+const pictureStore = usePictureStore();
 const baseTransformStore = usebaseTransformStore();
-
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 
 const renderToCanvas = async (img: HTMLImageElement) => {
@@ -52,8 +53,9 @@ const renderToCanvas = async (img: HTMLImageElement) => {
   offCtx?.drawImage(img, 0, 0);
 
   baseTransformStore.setInitialCanvas(offscreenCanvas);
-  baseTransformStore.setBaseRatio(baseRatio);
+  pictureStore.setBaseRatio(baseRatio);
 };
+
 
 const previewStyle = computed(() => ({
   transform: `

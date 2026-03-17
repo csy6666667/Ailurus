@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-13 12:00:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-15 15:59:00
+ * @LastEditTime: 2026-03-17 20:12:00
  */
 <template>
   <div class="rotate-module">
@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { usebaseTransformStore } from '@/store/picture/AffineTransform/baseTransform';
+import { usebaseTransformStore } from '@/store/picture/AffineTransform/BaseTransform/baseTransform';
 
 const baseTransformStore = usebaseTransformStore();
 </script>

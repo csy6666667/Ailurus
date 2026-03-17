@@ -3,14 +3,15 @@
  * @Author: 陈思宇
  * @Date: 2026-3-14 15:20:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-1 719:34:00
+ * @LastEditTime: 2026-03-17 20:12:00
 */
 import { defineStore } from "pinia";
 import { markRaw } from "vue";
-import type { baseTransform } from "@/types/picture/AffineTransform/baseTransform"; 
+import type { baseTransform } from "@/types/picture/AffineTransform/BaseTransform/baseTransform"; 
 import { rotateImage } from '@/components/utils/picture/affineTransform/baseTransform/rotate';
 import { scaleImage } from "@/components/utils/picture/affineTransform/baseTransform/scale";
 import { translateImage } from "@/components/utils/picture/affineTransform/baseTransform/translate";
+import { usePictureStore } from "../../picture";
 
 export const usebaseTransformStore = defineStore('baseTransform',{
   state: (): baseTransform => ({
@@ -18,22 +19,23 @@ export const usebaseTransformStore = defineStore('baseTransform',{
     scale: 1,
     translateX: 0,
     translateY: 0,
-    baseRatio: 1,
     initialCanvas: null as HTMLCanvasElement | null,
   }),
+  getters:{
+    baseRatio: () => {
+      const pictureStore = usePictureStore();
+      return pictureStore.baseRatio;
+    }
+  },
   actions: {
     setInitialCanvas(canvas: HTMLCanvasElement){
       this.initialCanvas = markRaw(canvas);
-    },
-    setBaseRatio(baseRatio: number){
-      this.baseRatio = baseRatio;
     },
     reset(){
       this.angle = 0;
       this.scale = 1;
       this.translateX = 0;
       this.translateY = 0;
-      this.baseRatio = 1;
     },
     download() {
       if (this.initialCanvas) {

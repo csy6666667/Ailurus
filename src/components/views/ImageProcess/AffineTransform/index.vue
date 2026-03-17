@@ -3,7 +3,7 @@
 * @Author: 陈思宇
 * @Date: 2026-03-12 19:58:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-17 19:34:00
+* @LastEditTime: 2026-03-17 20:12:00
 -->
 <template>
   <div class="workplace">
@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import CanvasWrapper from '@/components/common/CanvasWrapper.vue';
 import { ref } from 'vue';
-import { usePerspectiveTransformStore } from '@/store/picture/AffineTransform/perspectiveTransform';
+import { usePerspectiveTransformStore } from '@/store/picture/AffineTransform/PerspectiveTransform/perspectiveTransform';
 
 const perspectiveTransformStore = usePerspectiveTransformStore();
 let isloaded = ref<boolean>(false);
