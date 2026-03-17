@@ -3,14 +3,14 @@
  * @Author: 陈思宇
  * @Date: 2026-3-14 15:20:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-16 15:36:00
+ * @LastEditTime: 2026-03-1 719:34:00
 */
 import { defineStore } from "pinia";
 import { markRaw } from "vue";
 import type { baseTransform } from "@/types/picture/AffineTransform/baseTransform"; 
-import { rotateImage } from '@/components/utils/picture/baseTransform/rotate';
-import { scaleImage } from "@/components/utils/picture/baseTransform/scale";
-import { translateImage } from "@/components/utils/picture/baseTransform/translate";
+import { rotateImage } from '@/components/utils/picture/affineTransform/baseTransform/rotate';
+import { scaleImage } from "@/components/utils/picture/affineTransform/baseTransform/scale";
+import { translateImage } from "@/components/utils/picture/affineTransform/baseTransform/translate";
 
 export const usebaseTransformStore = defineStore('baseTransform',{
   state: (): baseTransform => ({

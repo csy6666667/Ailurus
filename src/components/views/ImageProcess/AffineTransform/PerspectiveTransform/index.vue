@@ -3,17 +3,17 @@
  * @Author: 陈思宇
  * @Date: 2026-03-17 10:05:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 10:55:00
+ * @LastEditTime: 2026-03-17 19:34:00
  */
 <template>
 	<div class="perspective-console">
-		<h3>透视变换控制面板</h3>
 		<div class="points">
 			<div v-for="(p, i) in corners" :key="i">点 {{ i + 1 }}: {{ p.x }}, {{ p.y }}</div>
 		</div>
 		<div class="actions">
 			<button class="btn" @click="reset">重置锚点</button>
 		</div>
+    <button @click="handleApply">应用效果</button>
 	</div>
 </template>
 
@@ -32,6 +32,11 @@ const reset = () => {
 		{ x: 0, y: 0 }
 	];
 };
+
+const handleApply = () => {
+	console.log(111);
+	store.apply();
+}
 </script>
 
 <style scoped>

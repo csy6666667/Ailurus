@@ -3,11 +3,11 @@
 * @Author: 陈思宇
 * @Date: 2026-03-12 19:58:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-16 21:25:00
+* @LastEditTime: 2026-03-17 19:34:00
 -->
 <template>
   <div class="workplace">
-    <CanvasWrapper v-model:has-image="isloaded">
+    <CanvasWrapper v-model:has-image="isloaded" @update:has-image="handleUpload" ref="inputCanvas">
       <template #overlay>
         <router-view name="canvasOverlay"/>
       </template>
@@ -18,8 +18,20 @@
 <script setup lang="ts">
 import CanvasWrapper from '@/components/common/CanvasWrapper.vue';
 import { ref } from 'vue';
+import { usePerspectiveTransformStore } from '@/store/picture/AffineTransform/perspectiveTransform';
 
+const perspectiveTransformStore = usePerspectiveTransformStore();
 let isloaded = ref<boolean>(false);
+
+const inputCanvas = ref<InstanceType<typeof CanvasWrapper> | null>(null);
+
+const handleUpload = (val: boolean) => {
+  if(!val) return;
+  isloaded.value = true;
+  let canvas = inputCanvas.value?.getCanvas();
+  if(canvas)
+    perspectiveTransformStore.setInputCanvas(canvas);
+}
 </script>
 
 <style scoped>
