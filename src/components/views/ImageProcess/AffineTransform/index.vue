@@ -3,11 +3,11 @@
 * @Author: 陈思宇
 * @Date: 2026-03-12 19:58:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-17 20:12:00
+* @LastEditTime: 2026-03-17 21:24:00
 -->
 <template>
   <div class="workplace">
-    <CanvasWrapper v-model:has-image="isloaded" @update:has-image="handleUpload" ref="inputCanvas">
+    <CanvasWrapper v-model:has-image="isloaded" @update:has-image="handleUpload" ref="inputCanvas" @ready = "onCanvasReady">
       <template #overlay>
         <router-view name="canvasOverlay"/>
       </template>
@@ -19,8 +19,10 @@
 import CanvasWrapper from '@/components/common/CanvasWrapper.vue';
 import { ref } from 'vue';
 import { usePerspectiveTransformStore } from '@/store/picture/AffineTransform/PerspectiveTransform/perspectiveTransform';
+import { usePictureStore } from '@/store/picture/picture';
 
 const perspectiveTransformStore = usePerspectiveTransformStore();
+const pictureStore = usePictureStore();
 let isloaded = ref<boolean>(false);
 
 const inputCanvas = ref<InstanceType<typeof CanvasWrapper> | null>(null);
@@ -31,6 +33,12 @@ const handleUpload = (val: boolean) => {
   let canvas = inputCanvas.value?.getCanvas();
   if(canvas)
     perspectiveTransformStore.setInputCanvas(canvas);
+}
+
+const onCanvasReady = (data: {visualWidth: number, visualHeight: number, baseRatio: number}) => {
+  pictureStore.setSize(data.visualWidth, data.visualHeight);
+  pictureStore.setBaseRatio(data.baseRatio);
+  perspectiveTransformStore.initPoints();
 }
 </script>
 

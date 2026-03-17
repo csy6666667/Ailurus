@@ -3,7 +3,7 @@
 * @Author: 陈思宇
 * @Date: 2026-03-12 19:58:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-16 21:25:00
+* @LastEditTime: 2026-03-17 21:24:00
 -->
 <template>
   <div class="canvas-wrapper">
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="viewport">
-      <image-editor-viewport ref="viewport" :has-image="props.hasImage"/>
+      <image-editor-viewport ref="viewport" :has-image="props.hasImage" @image-ready = "(data: {visualWidth: number, visualHeight: number, baseRatio: number}) => $emit('ready', data)"/>
       <slot name="overlay"></slot>
     </div>
   </div>
@@ -40,7 +40,7 @@ const props = defineProps<{
 const fileInput = ref<HTMLInputElement | null>(null);
 const viewport = ref<InstanceType<typeof ImageEditorViewport> | null>(null);
 
-const emit = defineEmits(['update:hasImage']);  
+const emit = defineEmits(['update:hasImage', 'ready']);  
 
 const onFileSelected = (event: Event) => {
   const target = event.target as HTMLInputElement
