@@ -6,7 +6,7 @@
  * @LastEditTime: 2026-03-16 21:25:00
 */
 import { applyMorphologyEffect } from "@/components/utils/picture/morphology/morphology"
-import type { morphology } from "@/types/picture/morphology"
+import type { morphology } from "@/types/picture/Morphology/morphology"
 import { defineStore } from "pinia"
 
 export const useMorphologyStore = defineStore('morphology', {

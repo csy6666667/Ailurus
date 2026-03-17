@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import CanvasWrapper from '@/components/common/CanvasWrapper.vue';
 import { nextTick, ref } from 'vue';
-import { useMorphologyStore } from '@/store/picture/morphology';
+import { useMorphologyStore } from '@/store/picture/Morphology/morphology';
 
 const morphology = useMorphologyStore();
 

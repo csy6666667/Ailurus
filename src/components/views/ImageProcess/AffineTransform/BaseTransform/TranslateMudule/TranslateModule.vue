@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { usebaseTransformStore } from '@/store/picture/baseTransform';
+import { usebaseTransformStore } from '@/store/picture/AffineTransform/baseTransform';
 
 const baseTransformStore = usebaseTransformStore();
 </script>

@@ -7,7 +7,7 @@
 */
 import { defineStore } from "pinia";
 import { markRaw } from "vue";
-import type { baseTransform } from "@/types/picture/baseTransform"; 
+import type { baseTransform } from "@/types/picture/AffineTransform/baseTransform"; 
 import { rotateImage } from '@/components/utils/picture/baseTransform/rotate';
 import { scaleImage } from "@/components/utils/picture/baseTransform/scale";
 import { translateImage } from "@/components/utils/picture/baseTransform/translate";

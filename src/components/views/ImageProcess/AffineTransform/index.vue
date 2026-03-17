@@ -7,7 +7,11 @@
 -->
 <template>
   <div class="workplace">
-    <CanvasWrapper v-model:has-image="isloaded"/>
+    <CanvasWrapper v-model:has-image="isloaded">
+      <template #overlay>
+        <router-view name="canvasOverlay"/>
+      </template>
+    </CanvasWrapper>
   </div>
 </template>
 

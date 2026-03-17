@@ -22,7 +22,10 @@
         <p class="upload-hint">点击上传图片</p>
       </div>
     </div>
-    <image-editor-viewport ref="viewport" :has-image="props.hasImage"/>
+    <div class="viewport">
+      <image-editor-viewport ref="viewport" :has-image="props.hasImage"/>
+      <slot name="overlay"></slot>
+    </div>
   </div>
 </template>
 
@@ -120,5 +123,8 @@ defineExpose({
   image-rendering: pixelated;
   box-shadow: var(--canvas-shadow);
   background-color: var(--canvas-bg-color);
+}
+.viewport{
+  position: relative;
 }
 </style>

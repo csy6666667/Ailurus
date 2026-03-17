@@ -18,7 +18,7 @@ import PanelButton from '@/components/common/panelButton.vue';
 import RotateModule from './RotateModule/RotateModule.vue';
 import ScaleModule from './ScaleModule/ScaleModule.vue';
 import TranslateModule from './TranslateMudule/TranslateModule.vue';
-import { usebaseTransformStore } from '@/store/picture/baseTransform';
+import { usebaseTransformStore } from '@/store/picture/AffineTransform/baseTransform';
 
 const baseTransformStore = usebaseTransformStore();
 
