@@ -20,9 +20,12 @@ import PanelButton from '@/components/common/panelButton.vue';
 import Kernel from './Kernel/Kernel.vue';
 import Operator from './Operator/Operator.vue';
 import Threshold from './Threshold/Threshold.vue';
+import { useMorphologyStore } from '@/store/picture/morphology';
+
+const morphologyStore = useMorphologyStore();
 
 const handleApply = () => {
-
+  morphologyStore.apply();
 }
 </script>
 
