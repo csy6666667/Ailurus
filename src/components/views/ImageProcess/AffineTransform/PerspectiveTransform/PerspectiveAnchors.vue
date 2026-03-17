@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-17 16:04:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 10:55:00
+ * @LastEditTime: 2026-03-17 20:12:00
  */
 <template>
   <svg class="perspective-svg" width="100%" height="100%">
@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { usePerspectiveTransformStore } from '@/store/picture/AffineTransform/perspectiveTransform';
+import { usePerspectiveTransformStore } from '@/store/picture/AffineTransform/PerspectiveTransform/perspectiveTransform';
 
 const perspectiveTransformStore = usePerspectiveTransformStore();
 
