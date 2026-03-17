@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-16 12:20:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-16 15:36:00
+ * @LastEditTime: 2026-03-17 19:34:00
 */
 
 interface TranslateOptions {
