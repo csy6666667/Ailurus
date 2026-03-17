@@ -5,6 +5,7 @@
  * @LastEditors: 陈思宇
  * @LastEditTime: 2026-03-16 21:25:00
 */
+import { applyMorphologyEffect } from "@/components/utils/picture/morphology/morphology"
 import type { morphology } from "@/types/picture/morphology"
 import { defineStore } from "pinia"
 
@@ -24,6 +25,19 @@ export const useMorphologyStore = defineStore('morphology', {
     },
     setInputCanvas(canvas: HTMLCanvasElement | null){
       this.inputCanvas = canvas;
+    },
+    apply() {
+      if (!this.inputCanvas || !this.outputCanvas) {
+        console.warn("Canvas 尚未就绪");
+        return;
+      }
+      applyMorphologyEffect(this.inputCanvas, this.outputCanvas, {
+        operator: this.operator,
+        kernelSize: this.kernelSize,
+        kernelShape: this.kernelShape,
+        iterations: this.iterations,
+        threshold: this.threshold
+      });
     }
   }
 })
