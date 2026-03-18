@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-17 10:05:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 20:12:00
+ * @LastEditTime: 2026-03-18 18:10:00
  */
 <template>
 	<div class="perspective-console">
@@ -34,7 +34,6 @@ const reset = () => {
 };
 
 const handleApply = () => {
-	console.log(111);
 	store.apply();
 }
 </script>
