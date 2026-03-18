@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-11 19:49:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-13 12:12:00
+ * @LastEditTime: 2026-03-18 14:34:00
  */
 import { createRouter, createWebHistory } from 'vue-router';
 import pictureRoutes  from './modules/Picture/picture';
@@ -13,7 +13,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Picture',
-    redirect: '/picture/affineTransform/baseTransform',
+    redirect: '/picture/pixelOperation',
     children:[
       ...pictureRoutes,
       ...audioRoutes

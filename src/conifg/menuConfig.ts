@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-3-14 14:51:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 10:55:00
+ * @LastEditTime: 2026-03-18 14:34:00
 */
 import { markRaw } from "vue"
 import { Picture, Mic } from "@element-plus/icons-vue"
@@ -22,6 +22,14 @@ export const sideBarMenu: MenuItem[] = [
     icon: markRaw(Picture),
     depth: 1,
     children: [
+      {
+        title: '像素处理',
+        routeName: 'pixelOperation',
+        depth: 2,
+        children: [
+          { title: '色彩转换', routeName: 'colorConversion', depth: 3}
+        ]
+      },
       {
         title: '仿射变换',
         routeName: 'affineTransform',
