@@ -3,10 +3,9 @@
  * @Author: 陈思宇
  * @Date: 2026-3-14 15:20:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 20:12:00
+ * @LastEditTime: 2026-03-18 19:52:00
 */
 import { defineStore } from "pinia";
-import { markRaw } from "vue";
 import type { baseTransform } from "@/types/picture/AffineTransform/BaseTransform/baseTransform"; 
 import { rotateImage } from '@/components/utils/picture/affineTransform/baseTransform/rotate';
 import { scaleImage } from "@/components/utils/picture/affineTransform/baseTransform/scale";
@@ -19,18 +18,18 @@ export const usebaseTransformStore = defineStore('baseTransform',{
     scale: 1,
     translateX: 0,
     translateY: 0,
-    initialCanvas: null as HTMLCanvasElement | null,
   }),
   getters:{
     baseRatio: () => {
       const pictureStore = usePictureStore();
       return pictureStore.baseRatio;
+    },
+    inputCanvas: () => {
+      const pictureStore = usePictureStore();
+      return pictureStore.inputCanvas;
     }
   },
   actions: {
-    setInitialCanvas(canvas: HTMLCanvasElement){
-      this.initialCanvas = markRaw(canvas);
-    },
     reset(){
       this.angle = 0;
       this.scale = 1;
@@ -38,10 +37,10 @@ export const usebaseTransformStore = defineStore('baseTransform',{
       this.translateY = 0;
     },
     download() {
-      if (this.initialCanvas) {
+      if (this.inputCanvas) {
         const tempCanvas = document.createElement('canvas');
 
-        translateImage(this.initialCanvas, tempCanvas, { tx: this.translateX / this.baseRatio, ty: this.translateY / this.baseRatio});
+        translateImage(this.inputCanvas, tempCanvas, { tx: this.translateX / this.baseRatio, ty: this.translateY / this.baseRatio});
         rotateImage(tempCanvas, tempCanvas, { angle: -this.angle });
         scaleImage(tempCanvas, tempCanvas, { scale: this.scale });
 

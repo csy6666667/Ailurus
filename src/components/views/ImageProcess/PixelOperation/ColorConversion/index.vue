@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-18 14:25:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-18 14:34:00
+ * @LastEditTime: 2026-03-18 18:10:00
  */
 <template>
   <div class="pixel-control-panel">
@@ -11,8 +11,8 @@
       <template #header>
         <div class="card-header">
           <span>实验室监控 (Wasm Engine)</span>
-          <el-tag :type="isRunning ? 'danger' : 'success'">
-            {{ isRunning ? '处理中...' : '待命' }}
+          <el-tag :type="colorConversionStore.isRunning ? 'danger' : 'success'">
+            {{ colorConversionStore.isRunning ? '处理中...' : '待命' }}
           </el-tag>
         </div>
       </template>
@@ -53,15 +53,8 @@
 
     <div class="action-footer">
       <el-button-group>
-        <el-button type="primary" :loading="isRunning" @click="handleStart">
-          开始实验
-        </el-button>
-        <el-button 
-          @mousedown="handleCompareStart" 
-          @mouseup="handleCompareEnd"
-          @mouseleave="handleCompareEnd"
-        >
-          按住对比
+        <el-button type="primary" :loading="colorConversionStore.isRunning" @click="handleStart">
+          应用效果
         </el-button>
         <el-button @click="handleReset">重置</el-button>
       </el-button-group>
@@ -71,11 +64,14 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue'
+import { useColorConversionStore } from '@/store/picture/PixelOperation/ColorConversion.ts/colorConversion'
+import type { config } from '@/types/picture/PixelOperation/ColorConversion/config';
 
-const isRunning = ref(false)
+const colorConversionStore = useColorConversionStore();
+
 const currentY = ref(0)
 const wasmTime = ref(0)
-const imageHeight = ref(1080) // 实际应从图片获取
+const imageHeight = ref(colorConversionStore.inputCanvas?.height) // 实际应从图片获取
 
 const config = reactive({
   mode: 'weighted',
@@ -84,51 +80,15 @@ const config = reactive({
 })
 
 const progress = computed(() => {
-  return Math.round((currentY.value / imageHeight.value) * 100)
+  if(imageHeight.value)
+    return Math.round((currentY.value / imageHeight.value) * 100)
 })
 
-// 模拟开始处理
-const handleStart = async () => {
-  isRunning.value = true
-  currentY.value = 0
-  
-  const runStep = async () => {
-    if (currentY.value >= imageHeight.value) {
-      isRunning.value = false
-      return
-    }
-
-    const start = performance.now()
-    
-    // 这里调用你的 Go-Wasm
-    // await wasmWorker.process({ 
-    //   y: currentY.value, 
-    //   step: config.step,
-    //   mode: config.mode 
-    // })
-    
-    wasmTime.value = performance.now() - start
-    currentY.value += config.step
-    
-    requestAnimationFrame(runStep)
-  }
-
-  requestAnimationFrame(runStep)
-}
-
-// 单画布对比逻辑：利用备份覆盖
-const handleCompareStart = () => {
-  // 从 Store 获取 initialData 塞入 Canvas
-}
-
-const handleCompareEnd = () => {
-  // 将最后一次处理好的 processedData 塞回 Canvas
-}
+const handleStart = () => {
+  colorConversionStore.apply(config);
+};
 
 const handleReset = () => {
-  currentY.value = 0
-  isRunning.value = false
-  // 恢复原图
 }
 </script>
 

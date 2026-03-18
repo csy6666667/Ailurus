@@ -3,11 +3,12 @@
  * @Author: 陈思宇
  * @Date: 2026-3-14 15:20:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-16 21:25:00
+ * @LastEditTime: 2026-03-18 19:52:00
 */
 import { applyMorphologyEffect } from "@/components/utils/picture/morphology/morphology"
 import type { morphology } from "@/types/picture/Morphology/morphology"
 import { defineStore } from "pinia"
+import { usePictureStore } from "../picture";
 
 export const useMorphologyStore = defineStore('morphology', {
   state: (): morphology => ({
@@ -16,15 +17,17 @@ export const useMorphologyStore = defineStore('morphology', {
     kernelShape: 'MORPH_RECT', 
     iterations: 1,
     threshold: 127,
-    inputCanvas: null as HTMLCanvasElement | null,
     outputCanvas: null as HTMLCanvasElement | null
   }),
+  getters:{
+    inputCanvas: () => {
+      const pictureStore = usePictureStore();
+      return pictureStore.inputCanvas;
+    }
+  },
   actions:{
     setOutputCanvas(canvas: HTMLCanvasElement | null){
       this.outputCanvas = canvas;
-    },
-    setInputCanvas(canvas: HTMLCanvasElement | null){
-      this.inputCanvas = canvas;
     },
     apply() {
       if (!this.inputCanvas || !this.outputCanvas) {

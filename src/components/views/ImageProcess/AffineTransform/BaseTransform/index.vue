@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-12 21:49:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 20:12:00
+ * @LastEditTime: 2026-03-18 19:52:00
  */
 <template>
   <div class="base-transform">
@@ -19,6 +19,7 @@ import RotateModule from './RotateModule/RotateModule.vue';
 import ScaleModule from './ScaleModule/ScaleModule.vue';
 import TranslateModule from './TranslateMudule/TranslateModule.vue';
 import { usebaseTransformStore } from '@/store/picture/AffineTransform/BaseTransform/baseTransform';
+import { onUnmounted } from 'vue';
 
 const baseTransformStore = usebaseTransformStore();
 
@@ -29,6 +30,10 @@ const handleDownload = () => {
 const handleReset = () => {
   baseTransformStore.reset();
 };
+
+onUnmounted(() => {
+  baseTransformStore.reset();  
+});
 </script>
 
 <style scoped>

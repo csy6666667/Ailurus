@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-17 10:05:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 20:12:00
+ * @LastEditTime: 2026-03-18 19:52:00
  */
 <template>
 	<div class="perspective-console">
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue';
+import { onMounted, onUnmounted, toRefs } from 'vue';
 import { usePerspectiveTransformStore } from '@/store/picture/AffineTransform/PerspectiveTransform/perspectiveTransform';
 
 const store = usePerspectiveTransformStore();
@@ -34,9 +34,15 @@ const reset = () => {
 };
 
 const handleApply = () => {
-	console.log(111);
 	store.apply();
 }
+onMounted(() => {
+	store.setHasCorners(true);
+})
+
+onUnmounted(() => {
+	store.setHasCorners(false);
+})
 </script>
 
 <style scoped>

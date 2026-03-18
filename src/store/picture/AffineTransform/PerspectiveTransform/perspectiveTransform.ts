@@ -18,8 +18,7 @@ export const usePerspectiveTransformStore = defineStore('perspectiveTransform', 
       {x: 0, y: 0},
       {x: 0, y: 0}
     ],
-    inputCanvas: null as HTMLCanvasElement | null,
-    hasCorners: true
+    hasCorners: false
   }),
   getters:{
     baseRatio:() => {
@@ -33,12 +32,13 @@ export const usePerspectiveTransformStore = defineStore('perspectiveTransform', 
     height:() => {
       const pictureStore = usePictureStore();
       return pictureStore.height
+    },
+    inputCanvas:() => {
+      const pictureStore = usePictureStore();
+      return pictureStore.inputCanvas
     }
   },
   actions:{
-    setInputCanvas(canvas: HTMLCanvasElement | null){
-      this.inputCanvas = canvas;
-    },
     setHasCorners(val: boolean){
       this.hasCorners = val;
     },
@@ -52,10 +52,6 @@ export const usePerspectiveTransformStore = defineStore('perspectiveTransform', 
         { x: this.width, y: this.height },
         { x: 0, y: this.height }
       ];
-    },
-    reset(){
-      this.hasCorners = true;
-      this.initPoints();
     },
     apply(){
       if(!this.inputCanvas)return;
