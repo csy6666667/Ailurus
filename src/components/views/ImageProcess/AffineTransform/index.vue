@@ -3,13 +3,13 @@
 * @Author: 陈思宇
 * @Date: 2026-03-12 19:58:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-17 21:24:00
+* @LastEditTime: 2026-03-18 19:52:00
 -->
 <template>
   <div class="workplace">
     <CanvasWrapper v-model:has-image="isloaded" @update:has-image="handleUpload" ref="inputCanvas" @ready = "onCanvasReady">
       <template #overlay>
-        <router-view name="canvasOverlay"/>
+        <PerspectiveAnchors v-if="perspectiveTransformStore.hasCorners"/>
       </template>
     </CanvasWrapper>
   </div>
@@ -17,9 +17,14 @@
 
 <script setup lang="ts">
 import CanvasWrapper from '@/components/common/CanvasWrapper.vue';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { usePerspectiveTransformStore } from '@/store/picture/AffineTransform/PerspectiveTransform/perspectiveTransform';
 import { usePictureStore } from '@/store/picture/picture';
+import PerspectiveAnchors from './PerspectiveTransform/PerspectiveAnchors.vue';
+
+onMounted(() => {
+  console.log(111);
+})
 
 const perspectiveTransformStore = usePerspectiveTransformStore();
 const pictureStore = usePictureStore();
@@ -32,12 +37,13 @@ const handleUpload = (val: boolean) => {
   isloaded.value = true;
   let canvas = inputCanvas.value?.getCanvas();
   if(canvas)
-    perspectiveTransformStore.setInputCanvas(canvas);
+    pictureStore.setInputCanvas(canvas);
 }
 
 const onCanvasReady = (data: {visualWidth: number, visualHeight: number, baseRatio: number}) => {
   pictureStore.setSize(data.visualWidth, data.visualHeight);
   pictureStore.setBaseRatio(data.baseRatio);
+  console.log(pictureStore.width)
   perspectiveTransformStore.initPoints();
 }
 </script>

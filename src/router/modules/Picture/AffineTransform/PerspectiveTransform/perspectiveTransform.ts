@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-03-17 10:36:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-17 10:55:00
+ * @LastEditTime: 2026-03-18 19:52:00
  */
 
 import type { RouteRecordRaw } from "vue-router";
@@ -16,14 +16,6 @@ const perspectiveTransformRoutes: RouteRecordRaw[] = [
       viewport: () => import("@/components/views/ImageProcess/AffineTransform/index.vue"),
       console: () => import("@/components/views/ImageProcess/AffineTransform/PerspectiveTransform/index.vue")
     },
-    children: [
-      {
-        path: '',
-        components: {
-          canvasOverlay: () => import("@/components/views/ImageProcess/AffineTransform/PerspectiveTransform/PerspectiveAnchors.vue")
-        }
-      }
-    ]
   }
 ]
 

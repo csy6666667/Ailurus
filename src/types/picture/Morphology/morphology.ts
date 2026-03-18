@@ -3,7 +3,7 @@
  * @Author: 陈思宇
  * @Date: 2026-3-16 19:38:00
  * @LastEditors: 陈思宇
- * @LastEditTime: 2026-03-16 21:25:00
+ * @LastEditTime: 2026-03-18 19:52:00
 */
 export interface morphology {
   operator: string,
@@ -11,6 +11,5 @@ export interface morphology {
   kernelShape: string,
   iterations: number,
   threshold: number, 
-  inputCanvas: HTMLCanvasElement | null,
   outputCanvas: HTMLCanvasElement | null
 }

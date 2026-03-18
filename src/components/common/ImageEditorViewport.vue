@@ -3,7 +3,7 @@
 * @Author: 陈思宇
 * @Date: 2026-03-14 21:11:00
 * @LastEditors: 陈思宇
-* @LastEditTime: 2026-03-17 21:24:00
+* @LastEditTime: 2026-03-18 19:52:00
 -->
 <template>
   <div class="viewport-container" v-show="props.hasImage">
@@ -55,7 +55,6 @@ const renderToCanvas = async (img: HTMLImageElement) => {
   const offCtx = offscreenCanvas.getContext('2d');
   offCtx?.drawImage(img, 0, 0);
 
-  baseTransformStore.setInitialCanvas(offscreenCanvas);
   emit('image-ready', {
     visualWidth,
     visualHeight,
