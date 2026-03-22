@@ -4,7 +4,8 @@ import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-// https://vite.dev/config/
+import { fileURLToPath, URL } from 'node:url'
+
 export default defineConfig({
   plugins: [
     vue(),
@@ -17,7 +18,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': '/src'
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
 })

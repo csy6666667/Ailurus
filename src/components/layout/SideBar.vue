@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import DropDown from '../common/DropDown.vue';
-import { sideBarMenu } from '../../conifg/menuConfig';
+import { sideBarMenu } from '../../config/menuConfig';
 
 </script>
 
