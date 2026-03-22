@@ -16,8 +16,10 @@
 import CanvasWrapper from '@/components/common/CanvasWrapper.vue';
 import { nextTick, ref } from 'vue';
 import { useMorphologyStore } from '@/store/picture/Morphology/morphology';
+import { usePictureStore } from '@/store';
 
 const morphology = useMorphologyStore();
+const pictureStore = usePictureStore();
 
 let isloaded = ref<boolean>(false);
 
@@ -32,7 +34,7 @@ const handleUpload = async (val: boolean) => {
   }
   let canvas = inputCanvas.value?.getCanvas();
   if(canvas)
-    morphology.setInputCanvas(canvas);
+    pictureStore.setInputCanvas(canvas);
   canvas = outputCanvas.value?.getCanvas();
   if(canvas)
     morphology.setOutputCanvas(canvas);
